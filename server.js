@@ -19,6 +19,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 // 2: Session code
 // 3: Views code
 app.set("views", "views");
@@ -38,7 +39,7 @@ app.get("/", function (req, res) {
 });
 
 const server = http.createServer(app);
-let PORT = 3000;
+let PORT = 3001;
 server.listen(PORT, function () {
   console.log(`The server is running successfully on port: ${PORT}`);
 });
