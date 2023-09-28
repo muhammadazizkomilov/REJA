@@ -23,7 +23,7 @@ function maslahat_Bering(a, callback) {
     }
 }
 console.log('passed here 0');
-maslahat_Bering(65, (err, data) => {
+maslahat_Bering(45, (err, data) => {
     if(err) console.log("ERROR:", err );
     else {
         console.log('javob:',  data);  
