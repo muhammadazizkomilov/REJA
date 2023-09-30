@@ -3,10 +3,13 @@ const mongodb = require("mongodb");
 
 
 let db;
-const connectionString ="mongodb+srv://Danny:Q0bJ6rZxHS9nLJBb@cluster0.upbgupi.mongodb.net/reja";
+const connectionString =
+"mongodb+srv://danny:CdWzaqRFEtB8R9Et@cluster0.ar5nuyp.mongodb.net/?retryWrites=true&w=majority";
+
 
 mongodb.connect(connectionString, {
- useNewUrlParser: true, useUnifiedTopology: true,
+ useNewUrlParser: true, 
+ useUnifiedTopology: true,
 },
  (err,client) => {
     if(err) console.log("ERROR on connection MangoDB");
