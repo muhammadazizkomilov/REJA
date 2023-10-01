@@ -14,7 +14,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
     console.log("ERROR:", err);
   } else {
-    user = JSON.parse(data);
+    user=JSON.parse(data);
   }
 });
 
@@ -33,21 +33,17 @@ app.set("view engine", "ejs");
 // 4 Routing code
 app.post("/create-item", (req, res) => {
   console.log("user entered /create-item");
-  console.log(req.body);
-  const new_reja =req.body.reja;
+  // console.log(req.body.reja);
+  const new_reja = req.body.reja;
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-  if (err) {
-    console.log(err);
-    res.end("something went wrong");
-  } else {
-    res.end("succeessfully addend");
-  }
+   console.log(data.ops);
+   res.json(ops [0]);
 });
-  // TODO: code with db here
+  
 });
 
 app.get("/author", (req, res) => {
-  res.render("author", { user: user });
+  res.render("author", { user:json });
 });
 
 app.get("/", function (req, res) {
