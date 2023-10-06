@@ -1,11 +1,12 @@
 console.log("Web serverni boshlash");
 const express = require("express");
-const res = require("express/lib/response")
+// const res = require("express/lib/response")
 const app = express();
 //const http = require("http");
-const fs = require("fs");
+// const fs = require("fs");
 // mongono chaqirish;
 const db = require("./server").db();
+const mongodb = require("mongodb");
 // bu db orqali databasega turli xilmalumotlarni yozish uqish uchurish yoki delete qilishni.
 //amalga oshiradi
 
@@ -36,7 +37,7 @@ app.set("view engine","ejs");
 
 //--------------------------4-----------------//
 app.post("/create-item", (req, res) => {
-   // console.log("user entered /create-item");
+   console.log("user entered /create-item");
    console.log(req.body);
    const new_reja = req.body.reja;
    db.collection("plans").insertOne({reja: new_reja}, (err,data) => {
@@ -52,10 +53,16 @@ app.post("/create-item", (req, res) => {
    //res.end("success") ;                                  // bu yerda boddyni tekshiri
  //res.json({ test: "success"});
 });
-
+ app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne({_id: new mongodb.ObjectId(id)}, function(err, data) {
+    res.json({state: "success" });
+  }
+  );
+});
 
      app.get("/",function (req, res) {
-      console.log("user entered /create-item");
+     
       db.collection("plans")
       .find()
       .toArray((err, data) => {
